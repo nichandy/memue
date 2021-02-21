@@ -1,0 +1,11 @@
+{
+  "name": "memue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nichandy/memue.git",
+  "author": "Nick Handy <nichandy@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mdast-util-from-markdown": "^0.8.5"
+  }
+}
