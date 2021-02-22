@@ -6,6 +6,12 @@
   "author": "Nick Handy <nichandy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "mdast-util-from-markdown": "^0.8.5"
+    "mdast-util-from-markdown": "^0.8.5",
+    "remark-frontmatter": "^3.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-stringify": "^9.0.1",
+    "to-vfile": "^6.1.0",
+    "unified": "^9.2.0",
+    "vfile-reporter": "^6.0.2"
   }
 }
