@@ -2,27 +2,41 @@ const visitChildren = require('unist-util-visit-children');
 const is = require('unist-util-is');
 const toMarkdown = require('mdast-util-to-markdown');
 const gfm = require('mdast-util-gfm');
-const findAllAfter = require('unist-util-find-all-after');
 const position = require('unist-util-position');
 const fse = require('fs-extra');
 const { nanoid } = require('nanoid');
+
+const logNode = (node) => {
+  console.log(JSON.stringify(node, null, 2));
+};
+
+// Save json data to file
+// TODO Replace with graphql call
+const storeData = (data, path) => {
+  try {
+    fse.writeFileSync(path, JSON.stringify(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 /*
  * Handles parsing markdown into flashcard format (term, definition) and producing an array of flashcard card objects
  */
 module.exports = (options) => (tree) => {
   let definition = '';
   let card = {};
-  let flashcards = [];
+  const flashcards = [];
 
   // Traverse mdast syntax tree
-  let visit = visitChildren((node, index, parent) => {
+  const visit = visitChildren((node, index, parent) => {
     // Skip root node traversal
     if (is(node, 'root')) return;
 
     // Store frontmatter
     if (is(node, 'yaml') || is(node, 'toml')) {
       const frontmatter = node.value.split('\n').map((element) => {
-        let splitElement = element.split(':');
+        const splitElement = element.split(':');
         return splitElement.map((e) => e.trim());
       });
       const mp = new Map(frontmatter);
@@ -58,17 +72,4 @@ module.exports = (options) => (tree) => {
   });
 
   visit(tree);
-};
-
-const logNode = (node) => {
-  console.log(JSON.stringify(node, null, 2));
-};
-
-// Save json data to file
-const storeData = (data, path) => {
-  try {
-    fse.writeFileSync(path, JSON.stringify(data));
-  } catch (err) {
-    console.error(err);
-  }
 };

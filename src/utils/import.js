@@ -1,22 +1,25 @@
-const vfile = require('to-vfile');
-const report = require('vfile-reporter');
+const fse = require('fs-extra');
 const unified = require('unified');
 const parse = require('remark-parse');
+const flashcard = require('./flashcard');
 const stringify = require('remark-stringify');
 const frontmatter = require('remark-frontmatter');
+const gfm = require('remark-gfm');
+const vfile = require('to-vfile');
+const report = require('vfile-reporter');
 
-// Unified creates a consistent language to parse text, html, xml, markdown files
-// Language specific plugins can be attached to unified to customize how a file is parsed and compiled
 unified()
   .use(parse)
+  .use(gfm)
   .use(stringify)
   .use(frontmatter, ['yaml', 'toml'])
-  .use(logger)
+  .use(flashcard)
   .process(vfile.readSync('demo.md'), function (err, file) {
     console.error(report(err || file));
-    console.log(String(file));
+    // console.log(String(file));
   });
 
+// console.log(contents);
 function logger() {
   return console.dir;
 }

@@ -1,6 +1,7 @@
 const fse = require('fs-extra');
 
 // Loads file from specified path
+// TODO Replace with graphql transformer json
 exports.loadData = (path) => {
   try {
     return fse.readFileSync(path, 'utf8');
@@ -12,7 +13,7 @@ exports.loadData = (path) => {
 
 // Creates an array of card IDs
 exports.createDeck = (flashcards) => {
-  let deck = [];
+  const deck = [];
   flashcards.forEach((card) => {
     deck.push(card.id);
   });
@@ -21,11 +22,12 @@ exports.createDeck = (flashcards) => {
 
 // Shuffles array of card IDs
 exports.cardShuffle = (deck) => {
-  for (let i = deck.length - 1; i > 0; i--) {
+  const shuffle = deck;
+  for (let i = shuffle.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * i);
-    const temp = deck[i];
-    deck[i] = deck[j];
-    deck[j] = temp;
+    const temp = shuffle[i];
+    shuffle[i] = shuffle[j];
+    shuffle[j] = temp;
   }
-  return deck;
+  return shuffle;
 };
