@@ -12,17 +12,30 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-transformer-json`,
+      options: {
+        typeName: ({ node, object, isArray }) => node.name,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/images/`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'content',
-        path: `${__dirname}/content/`,
+        name: 'flashcards',
+        path: `${__dirname}/flashcards/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'decks',
+        path: `${__dirname}/src/data/`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -39,7 +52,6 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-transformer-json`,
     `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

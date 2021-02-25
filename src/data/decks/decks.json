@@ -1,0 +1,70 @@
+[
+  {
+    "set_id": "kareareasGazebo",
+    "set_name": "Set A",
+    "cards": [
+      {
+        "title": "Set A",
+        "date": "02-01-21",
+        "id": "pdze8rkGioNu58wHpXv5C",
+        "term": "Multifactor Authentication",
+        "definition": "Using more than one method to authenticate users.\n"
+      },
+      {
+        "title": "Set A",
+        "date": "02-01-21",
+        "id": "CGDIFPYASbM-_hgDQSjp9",
+        "term": "Smart Cards",
+        "definition": "Using more than one method to authenticate users.\nSimilar in appearance to credit cards, smart cards have an embedded memory chip that contains encrypted authentication information. These cards are used for authentication.\n## Password Policies\nAccount policies help you control the composition and use of passwords. Password policies include:\n*   Enforce password history\n    *   Disables users from using a specified number of previous passwords when creating a new one\n*   Maximum password age\n    *   Requires user to change password when maximum age is reached\n*   Minimum password age\n    *   Stops user from changing password until the minimum password age is reached\nFoo\n![cat](sub/cat.jpg)\nNote: test note\n"
+      },
+      {
+        "title": "Set A",
+        "date": "02-01-21",
+        "id": "U2SJFhOcGRW5G9OC19-aP",
+        "term": "Microprobing",
+        "definition": "Using more than one method to authenticate users.\nSimilar in appearance to credit cards, smart cards have an embedded memory chip that contains encrypted authentication information. These cards are used for authentication.\n## Password Policies\nAccount policies help you control the composition and use of passwords. Password policies include:\n*   Enforce password history\n    *   Disables users from using a specified number of previous passwords when creating a new one\n*   Maximum password age\n    *   Requires user to change password when maximum age is reached\n*   Minimum password age\n    *   Stops user from changing password until the minimum password age is reached\nFoo\n![cat](sub/cat.jpg)\nNote: test note\nThe process of accessing a smart cards chip surface directly to observe, manipulate, and interfere with the circuit.\n"
+      },
+      {
+        "title": "Set A",
+        "date": "02-01-21",
+        "id": "xgTQ02ToPXIyh8KWRlmeD",
+        "term": "Radio frequency identification (RFID)",
+        "definition": "Using more than one method to authenticate users.\nSimilar in appearance to credit cards, smart cards have an embedded memory chip that contains encrypted authentication information. These cards are used for authentication.\n## Password Policies\nAccount policies help you control the composition and use of passwords. Password policies include:\n*   Enforce password history\n    *   Disables users from using a specified number of previous passwords when creating a new one\n*   Maximum password age\n    *   Requires user to change password when maximum age is reached\n*   Minimum password age\n    *   Stops user from changing password until the minimum password age is reached\nFoo\n![cat](sub/cat.jpg)\nNote: test note\nThe process of accessing a smart cards chip surface directly to observe, manipulate, and interfere with the circuit.\nThe wireless, non-contact use of radio frequency waves to transfer data.\n## Key Terms\n| Terms                                 | Definition                                                                                                                                                                   |\n| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Multifactor authentication            | Using more than one method to authenticate users.                                                                                                                            |\n| Smart cards                           | Similar in appearance to credit cards, smart cards have an embedded memory chip that contains encrypted authentication information. These cards are used for authentication. |\n| Microprobing                          | The process of accessing a smart cards chip surface directly to observe, manipulate, and interfere with the circuit.                                                         |\n| Radio frequency identification (RFID) | The wireless, non-contact use of radio frequency waves to transfer data.                                                                                                     |\n"
+      }
+    ]
+  },
+  {
+    "set_id": "doutingEndarting",
+    "set_name": "Set B",
+    "cards": [
+      {
+        "title": "Set B",
+        "date": "02-01-21",
+        "id": "pdze8rkGioNu58wHpXv5C",
+        "term": "Multifactor Authentication",
+        "definition": "Using more than one method to authenticate users.\n"
+      },
+      {
+        "title": "Set B",
+        "date": "02-01-21",
+        "id": "CGDIFPYASbM-_hgDQSjp9",
+        "term": "Smart Cards",
+        "definition": "Using more than one method to authenticate users.\nSimilar in appearance to credit cards, smart cards have an embedded memory chip that contains encrypted authentication information. These cards are used for authentication.\n## Password Policies\nAccount policies help you control the composition and use of passwords. Password policies include:\n*   Enforce password history\n    *   Disables users from using a specified number of previous passwords when creating a new one\n*   Maximum password age\n    *   Requires user to change password when maximum age is reached\n*   Minimum password age\n    *   Stops user from changing password until the minimum password age is reached\nFoo\n![cat](sub/cat.jpg)\nNote: test note\n"
+      },
+      {
+        "title": "Set B",
+        "date": "02-01-21",
+        "id": "U2SJFhOcGRW5G9OC19-aP",
+        "term": "Microprobing",
+        "definition": "Using more than one method to authenticate users.\nSimilar in appearance to credit cards, smart cards have an embedded memory chip that contains encrypted authentication information. These cards are used for authentication.\n## Password Policies\nAccount policies help you control the composition and use of passwords. Password policies include:\n*   Enforce password history\n    *   Disables users from using a specified number of previous passwords when creating a new one\n*   Maximum password age\n    *   Requires user to change password when maximum age is reached\n*   Minimum password age\n    *   Stops user from changing password until the minimum password age is reached\nFoo\n![cat](sub/cat.jpg)\nNote: test note\nThe process of accessing a smart cards chip surface directly to observe, manipulate, and interfere with the circuit.\n"
+      },
+      {
+        "title": "Set B",
+        "date": "02-01-21",
+        "id": "xgTQ02ToPXIyh8KWRlmeD",
+        "term": "Radio frequency identification (RFID)",
+        "definition": "Using more than one method to authenticate users.\nSimilar in appearance to credit cards, smart cards have an embedded memory chip that contains encrypted authentication information. These cards are used for authentication.\n## Password Policies\nAccount policies help you control the composition and use of passwords. Password policies include:\n*   Enforce password history\n    *   Disables users from using a specified number of previous passwords when creating a new one\n*   Maximum password age\n    *   Requires user to change password when maximum age is reached\n*   Minimum password age\n    *   Stops user from changing password until the minimum password age is reached\nFoo\n![cat](sub/cat.jpg)\nNote: test note\nThe process of accessing a smart cards chip surface directly to observe, manipulate, and interfere with the circuit.\nThe wireless, non-contact use of radio frequency waves to transfer data.\n"
+      }
+    ]
+  }
+]

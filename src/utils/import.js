@@ -1,12 +1,12 @@
 const fse = require('fs-extra');
 const unified = require('unified');
 const parse = require('remark-parse');
-const flashcard = require('./flashcard');
 const stringify = require('remark-stringify');
 const frontmatter = require('remark-frontmatter');
 const gfm = require('remark-gfm');
 const vfile = require('to-vfile');
 const report = require('vfile-reporter');
+const flashcard = require('./parser');
 
 unified()
   .use(parse)
