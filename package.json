@@ -11,6 +11,7 @@
     "mdast-util-gfm": "^0.1.2",
     "mdast-util-to-markdown": "^0.6.5",
     "micromark-extension-gfm": "^0.3.2",
+    "nanoid": "^3.1.20",
     "rehype-parse": "^7.0.1",
     "rehype-stringify": "^8.0.0",
     "remark": "^13.0.0",

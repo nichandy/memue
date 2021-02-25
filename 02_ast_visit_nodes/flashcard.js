@@ -4,7 +4,8 @@ const toMarkdown = require('mdast-util-to-markdown');
 const gfm = require('mdast-util-gfm');
 const findAllAfter = require('unist-util-find-all-after');
 const position = require('unist-util-position');
-
+const fse = require('fs-extra');
+const { nanoid } = require('nanoid');
 /*
  * Handles parsing markdown into flashcard format (term, definition) and producing an array of flashcard card objects
  */
@@ -12,6 +13,7 @@ module.exports = (options) => (tree) => {
   let definition = '';
   let card = {};
   let flashcards = [];
+
   // Traverse mdast syntax tree
   let visit = visitChildren((node, index, parent) => {
     // Skip root node traversal
@@ -26,35 +28,28 @@ module.exports = (options) => (tree) => {
       const mp = new Map(frontmatter);
       const obj = Object.fromEntries(mp);
 
-      // TODO Construct flashcard set title and details
       card = { ...obj };
       return;
     }
 
     // Store H1 as Flash Card Term
     if (is(node, { type: 'heading', depth: 1 })) {
-      // console.log('------------------ Card Start -------------------');
-      // TODO Construct card Term
-      card = { ...card, term: node.children[0].value };
-      // console.log(`Term: ${node.children[0].value}`);
-      // console.log('Definition: ');
+      card = { ...card, id: nanoid(), term: node.children[0].value };
       return;
     }
 
     // End Card Definition and store markdown
     if (is(node, 'thematicBreak')) {
-      // TODO Construct card Defitinition and add card to flash card set
       card = { ...card, definition: definition };
       flashcards.push(card);
-      //console.log(flashcards);
+
+      // Prevent storing flashcards until file is fully parsed
       const { line: TreePositionEnd } = position.end(tree);
       const { line: NodePositionEnd } = position.end(node);
       if (NodePositionEnd === TreePositionEnd - 1) {
-        console.log(flashcards);
+        const setTitle = card.title.split(' ');
+        storeData(flashcards, `./${setTitle.join('-')}.json`);
       }
-      // console.log('Store: Definition');
-      // console.log(definition);
-      // console.log('------------------ Card End -------------------');
       return;
     }
 
@@ -67,4 +62,13 @@ module.exports = (options) => (tree) => {
 
 const logNode = (node) => {
   console.log(JSON.stringify(node, null, 2));
+};
+
+// Save json data to file
+const storeData = (data, path) => {
+  try {
+    fse.writeFileSync(path, JSON.stringify(data));
+  } catch (err) {
+    console.error(err);
+  }
 };
