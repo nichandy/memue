@@ -12,7 +12,7 @@ const logNode = (node) => {
 /*
  * Handles parsing markdown into flashcard format (term, definition) and producing an array of flashcard card objects
  */
-module.exports = (decks) => (tree) => {
+module.exports = (options, decks) => (tree) => {
   let definition = '';
   const cards = {
     setId: nanoid(),
