@@ -5,13 +5,17 @@ const gfm = require('mdast-util-gfm');
 const position = require('unist-util-position');
 const fse = require('fs-extra');
 const { nanoid } = require('nanoid');
+const cardUtil = require('./flashcardUtil');
 /*
  * Handles parsing markdown into flashcard format (term, definition) and producing an array of flashcard card objects
  */
 module.exports = (options) => (tree) => {
-  let definition = '';
   let card = {};
-  let flashcards = [];
+  let cards = [];
+  let flashcards = {};
+  let info = {};
+  const deckId = nanoid();
+  let definition = '';
 
   // Traverse mdast syntax tree
   let visit = visitChildren((node, index, parent) => {
@@ -21,53 +25,39 @@ module.exports = (options) => (tree) => {
     // Store frontmatter
     if (is(node, 'yaml') || is(node, 'toml')) {
       const frontmatter = node.value.split('\n').map((element) => {
-        let splitElement = element.split(':');
-        return splitElement.map((e) => e.trim());
+        let splitElement = element.split(':').map((e) => e.trim());
+        return splitElement;
       });
       const mp = new Map(frontmatter);
       const obj = Object.fromEntries(mp);
-
-      card = { ...obj };
+      info = { id: deckId, ...obj };
       return;
     }
 
     // Store H1 as Flash Card Term
     if (is(node, { type: 'heading', depth: 1 })) {
-      card = { ...card, id: nanoid(), term: node.children[0].value };
+      card = { id: nanoid(), term: node.children[0].value };
       return;
     }
 
     // End Card Definition and store markdown
     if (is(node, 'thematicBreak')) {
-      card = { ...card, definition: definition };
-      flashcards.push(card);
+      // Create card and add it to the array of cards
+      card = { deckId: info.id, ...card, definition: definition };
+      cards.push(card);
 
-      // Prevent storing flashcards until file is fully parsed
+      // Prevent storing cards until file is fully parsed
       const { line: TreePositionEnd } = position.end(tree);
       const { line: NodePositionEnd } = position.end(node);
       if (NodePositionEnd === TreePositionEnd - 1) {
-        const setTitle = card.title.split(' ');
-        storeData(flashcards, `./${setTitle.join('-')}.json`);
+        flashcards = { ...flashcards, info, cards: cards };
+        cardUtil.addFlashcards(flashcards, './data/flashcards.json');
       }
       return;
     }
-
     // Convert definition nodes back to markdown
     definition += toMarkdown(node, { extensions: [gfm.toMarkdown()] });
   });
 
   visit(tree);
-};
-
-const logNode = (node) => {
-  console.log(JSON.stringify(node, null, 2));
-};
-
-// Save json data to file
-const storeData = (data, path) => {
-  try {
-    fse.writeFileSync(path, JSON.stringify(data));
-  } catch (err) {
-    console.error(err);
-  }
 };

@@ -41,13 +41,7 @@ exports.generateDecks = () => {
       .use(stringify)
       .use(frontmatter, ['yaml', 'toml'])
       .use(createFlashcard(decks))
-      .process(
-        vfile.readSync(`${__dirname}/../flashcards/${fileName}`),
-        function (err, file) {
-          console.error(report(err || file));
-          // console.log(String(file));
-        }
-      );
+      .process(fse.readFileSync(`${__dirname}/../flashcards/${fileName}`));
   });
   console.log(decks);
 };
