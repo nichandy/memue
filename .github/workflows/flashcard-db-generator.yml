@@ -29,15 +29,16 @@ jobs:
         with:
           node-version: '15.x'
       - name: Install Dependencies
-      - run: yarn
+        run: yarn
       - name: Run Flashcard DB Generator Script
-      - run: yarn run generate --if-present
+        run: yarn run generate
       - name: Check Repo Changes
-      - run: git status
+        run: git status
       - name: Commit files
         run: |
-          git add ./data
-          git commit -m auto-regenerate "./data/flashcards.json"
+          git config --local user.name "nichandy"
+          git add ./src/data/
+          git commit -m "auto-update flashcards.json"
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
         with:
