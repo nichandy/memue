@@ -1,3 +1,4 @@
+const path = require('path');
 const visitChildren = require('unist-util-visit-children');
 const is = require('unist-util-is');
 const toMarkdown = require('mdast-util-to-markdown');
@@ -51,7 +52,7 @@ module.exports = () => (tree) => {
       if (NodePositionEnd === TreePositionEnd - 1) {
         flashcards = { ...flashcards, info, cards: cards };
         console.log(`Generating ${flashcards.info.title} Flashcards`);
-        cardUtils.addFlashcards(flashcards, `${__dirname}/data/flashcards.json`);
+        cardUtils.addFlashcards(flashcards, path.join(__dirname, '..', 'data', 'flashcards.json'));
       }
       return;
     }

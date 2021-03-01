@@ -2,10 +2,10 @@ const fse = require('fs-extra');
 const path = require('path');
 const markdowngfm = require('./mdProcessor');
 
-console.log(path.join(__dirname, '..'));
+const contentPath = path.join(__dirname, '..', 'flashcards');
 
-// let filenames = fse.readdirSync(`${__dirname}/flashcards`);
-// filenames.map((filename) => {
-//   let doc = fse.readFileSync(`${__dirname}/flashcards/${filename}`);
-//   markdowngfm(doc);
-// });
+const filenames = fse.readdirSync(contentPath);
+filenames.forEach((filename) => {
+  const doc = fse.readFileSync(path.join(contentPath, filename));
+  markdowngfm(doc);
+});
