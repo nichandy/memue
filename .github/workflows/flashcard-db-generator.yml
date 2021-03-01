@@ -29,11 +29,11 @@ jobs:
         with:
           node-version: '15.x'
       - name: Install Dependencies
-      - run: yarn
+        run: yarn
       - name: Run Flashcard DB Generator Script
-      - run: yarn run generate --if-present
+        run: yarn run generate
       - name: Check Repo Changes
-      - run: git status
+        run: git status
       - name: Commit files
         run: |
           git add ./data
