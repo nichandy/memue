@@ -36,7 +36,7 @@ jobs:
         run: git status
       - name: Commit files
         run: |
-          git add ./src/data
+          git add ./src/data/
           git commit -m "auto-update flashcards.json"
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
