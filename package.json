@@ -6,8 +6,14 @@
   "author": "Nick Handy <nichandy@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./src/index.js",
-    "generate": "node ./src/index.js"
+    "generate": "node ./src/index.js",
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
     "bulma": "^0.9.2",
@@ -24,6 +30,7 @@
     "gatsby-source-filesystem": "^2.11.0",
     "gatsby-transformer-json": "^2.11.0",
     "gatsby-transformer-sharp": "^2.12.0",
+    "mdast-util-from-markdown": "^0.8.5",
     "mdast-util-gfm": "^0.1.2",
     "mdast-util-to-markdown": "^0.6.5",
     "nanoid": "^3.1.20",
@@ -39,13 +46,6 @@
     "sass": "^1.32.8",
     "to-vfile": "^6.1.0",
     "unified": "^9.2.0",
-    "unified-stream": "^1.0.6",
-    "unist-util-filter": "^2.0.3",
-    "unist-util-find-after": "^3.0.0",
-    "unist-util-find-all-after": "^3.0.2",
-    "unist-util-find-all-before": "^3.0.1",
-    "unist-util-find-all-between": "^2.1.0",
-    "unist-util-find-before": "^2.0.5",
     "unist-util-is": "^4.0.4",
     "unist-util-position": "^3.1.0",
     "unist-util-visit-children": "^1.1.4",
@@ -65,25 +65,5 @@
     "eslint-webpack-plugin": "^2.5.0",
     "gatsby-plugin-eslint": "^3.0.0",
     "prettier": "2.2.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }

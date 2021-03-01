@@ -3,29 +3,28 @@ const is = require('unist-util-is');
 const toMarkdown = require('mdast-util-to-markdown');
 const gfm = require('mdast-util-gfm');
 const position = require('unist-util-position');
-const fse = require('fs-extra');
 const { nanoid } = require('nanoid');
 const cardUtils = require('./cardUtils');
 /*
  * Handles parsing markdown into flashcard format (term, definition) and producing an array of flashcard card objects
  */
-module.exports = (options) => (tree) => {
+module.exports = () => (tree) => {
   let card = {};
-  let cards = [];
+  const cards = [];
   let flashcards = {};
   let info = {};
   const deckId = nanoid();
   let definition = '';
 
   // Traverse mdast syntax tree
-  const visit = visitChildren((node, index, parent) => {
+  const visit = visitChildren((node) => {
     // Skip root node traversal
     if (is(node, 'root')) return;
 
     // Store frontmatter
     if (is(node, 'yaml') || is(node, 'toml')) {
       const frontmatter = node.value.split('\n').map((element) => {
-        let splitElement = element.split(':').map((e) => e.trim());
+        const splitElement = element.split(':').map((e) => e.trim());
         return splitElement;
       });
       const mp = new Map(frontmatter);
@@ -52,10 +51,7 @@ module.exports = (options) => (tree) => {
       if (NodePositionEnd === TreePositionEnd - 1) {
         flashcards = { ...flashcards, info, cards: cards };
         console.log(`Generating ${flashcards.info.title} Flashcards`);
-        cardUtils.addFlashcards(
-          flashcards,
-          `${__dirname}/data/flashcards.json`
-        );
+        cardUtils.addFlashcards(flashcards, `${__dirname}/data/flashcards.json`);
       }
       return;
     }
