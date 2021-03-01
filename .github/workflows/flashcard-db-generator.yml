@@ -36,6 +36,7 @@ jobs:
         run: git status
       - name: Commit files
         run: |
+          git config --local user.name "nichandy"
           git add ./src/data/
           git commit -m "auto-update flashcards.json"
       - name: Push changes # push the output folder to your repo
