@@ -3,8 +3,7 @@ const fse = require('fs-extra');
 // Load cards from json file
 const loadFlashcards = (path) => {
   try {
-    const data = fse.readFileSync(path, 'utf8');
-    return JSON.parse(data);
+    return JSON.parse(fse.readFileSync(path, 'utf8'));
   } catch (err) {
     return false;
   }
@@ -12,16 +11,14 @@ const loadFlashcards = (path) => {
 
 // Store cards to json file
 const storeFlashcards = (data, path) => {
-  try {
-    fse.writeFileSync(path, JSON.stringify(data));
-  } catch (err) {
-    console.error(err);
-  }
+  fse.outputFileSync(path, JSON.stringify(data), (err) => {
+    console.log(err);
+  });
 };
 
 exports.addFlashcards = (flashcards, path) => {
-  let data = loadFlashcards(path);
-  if (data) {
+  if (fse.pathExistsSync(path)) {
+    let data = loadFlashcards(path);
     data.push(flashcards);
     storeFlashcards(data, path);
   } else {

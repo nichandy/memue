@@ -51,7 +51,11 @@ module.exports = (options) => (tree) => {
       const { line: NodePositionEnd } = position.end(node);
       if (NodePositionEnd === TreePositionEnd - 1) {
         flashcards = { ...flashcards, info, cards: cards };
-        cardUtils.addFlashcards(flashcards, './data/flashcards.json');
+        console.log(`Generating ${flashcards.info.title} Flashcards`);
+        cardUtils.addFlashcards(
+          flashcards,
+          `${__dirname}/data/flashcards.json`
+        );
       }
       return;
     }

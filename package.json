@@ -5,6 +5,10 @@
   "repository": "https://github.com/nichandy/memue.git",
   "author": "Nick Handy <nichandy@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "generate": "node ./src/index.js"
+  },
   "dependencies": {
     "fs-extra": "^9.1.0",
     "mdast-util-from-markdown": "^0.8.5",
