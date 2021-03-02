@@ -28,7 +28,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'flashcards',
-        path: `${__dirname}/flashcards/`,
+        path: `${__dirname}/src/flashcards/`,
       },
     },
     {

@@ -16,13 +16,28 @@ const storeFlashcards = (data, path) => {
   });
 };
 
+// Returns true if current deck has flashcards that match those being added
+const hasDuplicates = (deck, newCards) => {
+  return (
+    deck.filter((cards) => {
+      return cards.info.title === newCards.info.title;
+    }).length > 0
+  );
+};
+
 exports.addFlashcards = (flashcards, path) => {
   if (fse.pathExistsSync(path)) {
-    let data = loadFlashcards(path);
-    data.push(flashcards);
-    storeFlashcards(data, path);
+    const data = loadFlashcards(path);
+
+    // If not duplicate then push new cards
+    if (!hasDuplicates) {
+      data.push(flashcards);
+      storeFlashcards(data, path);
+    } else {
+      console.log(`Duplicate Deck Found: ${flashcards.info.title}`);
+    }
   } else {
-    let decks = [];
+    const decks = [];
     decks.push(flashcards);
     storeFlashcards(decks, path);
   }
@@ -30,11 +45,13 @@ exports.addFlashcards = (flashcards, path) => {
 
 // Shuffles array of card IDs
 exports.cardShuffle = (deck) => {
-  for (let i = deck.length - 1; i > 0; i--) {
+  let d;
+  for (let i = deck.length - 1; i > 0; i -= 1) {
+    d = deck;
     const j = Math.floor(Math.random() * i);
-    const temp = deck[i];
-    deck[i] = deck[j];
-    deck[j] = temp;
+    const temp = d[i];
+    d[i] = d[j];
+    d[j] = temp;
   }
-  return deck;
+  return d;
 };
