@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
+import useAllFlashcards from '../hooks/useAllFlashcards';
 
 import Header from './header';
 import './layout.css';
@@ -22,6 +23,19 @@ const Layout = ({ children }) => {
       }
     }
   `);
+
+  // TODO: Cleanup the parsing of json object returned from hook
+  // Testing out hook to retrieve all cards from flashcards.json
+  const deckData = useAllFlashcards();
+  const { edges: deckArray } = deckData.allFlashcards;
+  deckArray.forEach((deck) => {
+    const { title } = deck.node.info;
+    const terms = [];
+    deck.node.cards.map((card) => {
+      terms.push(card.term);
+    });
+    console.log({ title, terms });
+  });
 
   return (
     <>
