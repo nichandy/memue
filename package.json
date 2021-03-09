@@ -6,7 +6,7 @@
   "author": "Nick Handy <nichandy@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "generate": "node ./src/index.js",
+    "generate": "node ./src/utils/setup.js",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
