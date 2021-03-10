@@ -28,14 +28,14 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'flashcards',
-        path: `${__dirname}/src/flashcards/`,
+        path: `${__dirname}/content/flashcards/`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'decks',
-        path: `${__dirname}/src/data/`,
+        path: `${__dirname}/content/data/`,
       },
     },
     `gatsby-transformer-sharp`,

@@ -9,17 +9,20 @@ const useAllFlashcards = () => {
       allFlashcards {
         edges {
           node {
+            fields {
+              slug
+            }
             cards {
-              id
               deckId
-              term
               definition
+              id
+              term
             }
             info {
+              date
               id
               section
               title
-              date
             }
           }
         }

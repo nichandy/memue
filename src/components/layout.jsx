@@ -11,7 +11,6 @@ import { useStaticQuery, graphql } from 'gatsby';
 import useAllFlashcards from '../hooks/useAllFlashcards';
 
 import Header from './header';
-import './layout.css';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,21 +23,8 @@ const Layout = ({ children }) => {
     }
   `);
 
-  // TODO: Cleanup the parsing of json object returned from hook
-  // Testing out hook to retrieve all cards from flashcards.json
-  const deckData = useAllFlashcards();
-  const { edges: deckArray } = deckData.allFlashcards;
-  deckArray.forEach((deck) => {
-    const { title } = deck.node.info;
-    const terms = [];
-    deck.node.cards.map((card) => {
-      terms.push(card.term);
-    });
-    console.log({ title, terms });
-  });
-
   return (
-    <>
+    <div>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
@@ -58,7 +44,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>
-    </>
+    </div>
   );
 };
 
