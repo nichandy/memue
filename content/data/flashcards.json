@@ -110,7 +110,7 @@
       "id": "Qj8cy42OWhZRAA4N207uf",
       "title": "Hardening Authentication",
       "section": "6.6",
-      "date": "02-03-21"
+      "date": "2-03-21"
     },
     "cards": [
       {
@@ -224,7 +224,7 @@
     ]
   },
   {
-    "info": { "id": "230Sy3T_qkpJSeVndgIu2", "title": "Cryptography", "section": "7.1", "date": "02-24-21" },
+    "info": { "id": "230Sy3T_qkpJSeVndgIu2", "title": "Cryptography", "section": "7.1", "date": "2-24-21" },
     "cards": [
       {
         "deckId": "230Sy3T_qkpJSeVndgIu2",
