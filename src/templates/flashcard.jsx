@@ -30,9 +30,7 @@ class Flashcard extends Component {
     const { cards } = deck;
     return (
       <Layout>
-        <section className="section">
-          <div className="box"></div>
-        </section>
+        <Card />
       </Layout>
     );
   }
